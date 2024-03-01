@@ -56,3 +56,16 @@
 .bgyellow:hover{
     background-color: rgba(240,181,29,255) !important;
 }
+
+/* login.css */
+.relative {
+    position: relative;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px; /* Adjust this value as needed */
+    cursor: pointer;
+  }

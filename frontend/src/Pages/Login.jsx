@@ -15,7 +15,7 @@ const Login = () => {
     email: undefined,
     password: undefined
   });
-
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Added state variable
@@ -67,17 +67,24 @@ const Login = () => {
     }
 
   }
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(true);
+    setTimeout(() => {
+      setPasswordVisible(false);
+    }, 1000);
+  };
+
 
   return (
     <section>
       <Container>
-        <Row>
+        <Row className='lg:tw-mb-10 lg:tw-mt-10'>
           <Col lg='8' className='login_cont d-flex justify-content-space-between m-auto'>
-            <Row className=''>
-              <Col lg='5' className=''>
+            <Row className='tw-px-5 '>
+              <Col lg='5' md='5' className=''>
                 <img src={logimg} alt='' className='img-fluid' />
               </Col>
-              <Col lg='7'>
+              <Col lg='7' md='7'>
                 <div className='login_form pt-5'>
 
                   <h2 className='loghead'>Login</h2>
@@ -86,7 +93,12 @@ const Login = () => {
                       <input type='email' placeholder='email' required id='email' onChange={handleChange} />
                     </FormGroup>
                     <FormGroup>
-                      <input type='password' placeholder='password' required id='password' onChange={handleChange} />
+                    <div className='relative'>
+                        <input type={passwordVisible ? 'text' : 'password'} placeholder='Password' required id='password' onChange={handleChange} />
+                        <span className='password-toggle absolute inset-y-0 right-0 flex items-center mr-2 cursor-pointer' onClick={togglePasswordVisibility} style={{ color: 'gray' }}>
+                          {passwordVisible ? <i className="ri-eye-fill"></i> : <i className="ri-eye-off-line"></i>}
+                        </span>
+                      </div>
                     </FormGroup>
                     <Button className='btn primary_btn auth_btn mt-2' type='submit' disabled={isLoggedIn}>Login</Button> {/* Disable button if login failed */}
                   </Form>
