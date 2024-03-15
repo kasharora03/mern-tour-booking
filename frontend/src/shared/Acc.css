@@ -1,0 +1,113 @@
+.card1 {
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #ffffff;
+    overflow: hidden;
+}
+.card1{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+.rc-accordion-toggle {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    justify-content: space-between;
+    /* background-color: #f39c10; */
+    /* margin-bottom: 10px;  */
+    /* width: 60%; */
+    /* Add transition for background color change */
+}
+/* .bb{
+    border-bottom: var(--primary-color) solid 1px;
+} */
+/* .rc-accordion-toggle:hover {
+    background-color: #f39c10;
+    
+} */
+/* .rc-accordion-toggle:hover .rc-accordion-title{
+    color: white;
+} */
+
+.rc-accordion-toggle.active {
+    background-color: #ffffff;
+}
+.form-heading{
+    color: var(--primary-color);
+}
+.rc-accordion-toggle.active .rc-accordion-icon {
+    color: #fff;
+}
+
+.rc-accordion-card1 {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: none; /* Remove shadow */
+
+}
+
+.rc-accordion-card1:hover {
+    transition: none;
+    transform: scale(1) !important;
+}
+
+.rc-accordion-card1:last-child {
+    margin-bottom: 0;
+}
+
+.rc-accordion-title {
+    font-weight: 400;
+    font-size: 17px;
+    /* position: relative; */
+    margin-bottom: 0;
+    color: var(--text-color);
+    transition: color 0.1s; /* Add transition for text color change */
+}
+.plus{
+    color: var(--text-color);
+}
+.rc-accordion-toggle.active .rc-accordion-title {
+    color: var(--primary-color);
+}
+.rc-accordion-toggle.active .plus{
+    color: var(--primary-color);
+}
+.rc-accordion-icon {
+    position: relative;
+    top: 2px;
+    color: #475F7B;
+    transition: 0.35s;
+    font-size: 12px;
+}
+
+.rc-accordion-body {
+    text-align: left !important;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 15px;
+    background-color: #ffffff; /* Set background color to white */
+}
+
+.rc-accordion-body p {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #727E8C;
+}
+
+.rc-collapse {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease;
+}
+
+.rc-collapse.show {
+    height: max-content;
+}

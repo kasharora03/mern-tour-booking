@@ -1,0 +1,38 @@
+.blue{
+    color: rgba(8,29,62,255);
+}
+.yellow{
+    color: rgba(240,181,29,255);
+}
+.search_bar{
+    padding: 0.5rem 0.7rem;
+    padding-bottom: 0 !important;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    width: max-content;
+    margin-top:20px;
+}
+.form_group span{
+    font-size: 2rem;
+    color:gray;
+}
+.form_group h6{
+    margin-bottom: 0;
+}
+.form_group input{
+    border:none;
+    font-size: 0.9rem;
+    padding: 2px;
+}
+.form_group input:focus{
+    outline:none;
+}
+.search_icon{
+    font-size: 1.2rem;
+    background-color:rgba(240,181,29,255);
+    color: white;
+    font-weight: 300;
+    border-radius: 20px;
+    padding:5px 10px;
+    cursor:pointer;
+}

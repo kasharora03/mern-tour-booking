@@ -1,0 +1,22 @@
+.pagination span{
+    width: 2rem;
+    height: 2rem;
+    padding: 5px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f39c10;
+    color:#f39c10;
+    font-size: 1.1rem;
+    background-color:white;
+    cursor: pointer;
+    font-weight: 700;
+}
+.active_page{
+    background-color: #f39c10 !important;
+    color: white !important;
+}
+.active-accordion{
+    background-color: #ff0000;
+}
