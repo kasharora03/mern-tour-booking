@@ -72,7 +72,18 @@
     "price": 99,
     "maxGroupSize": 8,
     "desc": "this is the description",
-    "reviews": [],
+    "reviews": [
+      {
+       " name": "jhon doe",
+        "rating": 4.6,
+        "msg": "A very nice place to visit"
+      },
+      {
+        "name": "jhon doe",
+        "rating": 7,
+       " msg": "A very nice place to visit"
+      }
+    ],
 
     "photo": "/tour-images/tour-img06.jpg",
     "featured": true
@@ -91,7 +102,7 @@
     "featured": true
   },
   {
-    "title": "Snowy Mountains, Thailand",
+    "title": "Beautiful Snowy Mountains",
     "city": "Bangkok",
     "address": "Somewhere in Thailand",
     "distance": 500,

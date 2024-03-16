@@ -55,7 +55,7 @@ export const getSingleTour = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: 'Successfully Deleted',
+            message: 'Successful',
             data: tour
         });
     } catch (error) {
@@ -67,5 +67,30 @@ export const getSingleTour = async (req, res) => {
 };
 // getAllTours
 export const getAllTour = async (req, res) => {
-    
+    // for pagination
+    const page = parseInt(req.query.page);
+    // console.log(page);
+    try{
+        const tours = await Tour.find()
+        .skip(page * 8).limit(8);
+        res.status(200).json({
+            success: true,
+            count:tours.length,
+            message: 'Successful',
+            data: tours
+        })
+    }catch (error) {
+        res.status(404).json({
+            success: false,
+            message: 'Failed to Fetch. Try again'
+        })
+    }
 };
+
+// get tour by search
+
+export const getTourBySearch = async(req,res)=>{
+    const city = new RegExp(req.query.city,'i') //i means case sensitive
+    // const distance = parseInt(req.query.distance);
+    // const 
+}
