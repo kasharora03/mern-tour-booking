@@ -67,9 +67,5 @@ export const getSingleTour = async (req, res) => {
 };
 // getAllTours
 export const getAllTour = async (req, res) => {
-    try {
-
-    } catch (error) {
-
-    }
+    
 };
