@@ -5,9 +5,11 @@ import mongoose from 'mongoose';
 import cors from "cors";
 import cookieParser from 'cookie-parser';
 import tourRoute  from './Routes/tours.js';
+import userRoute  from './Routes/user.js';
+import authRoute  from './Routes/auth.js';
 // import Tour from './models/Tour.js';
 
-dotenv.config()
+dotenv.config();
 const app = express();
 const port = process.env.PORT ||8000;
 
@@ -41,9 +43,11 @@ app.get('/',(req,res)=>{
 // })
 // new approach
 app.use('/tours',tourRoute);
+app.use('/users',userRoute);
+app.use('/auth',authRoute);
 
 // listening
-app.listen(5000,()=>{
+app.listen(port,()=>{
     connect();
     console.log('listening to ',port);
 })
