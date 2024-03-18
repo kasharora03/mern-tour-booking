@@ -1,38 +1,45 @@
 import express from 'express';
-import dotenv  from 'dotenv';
+import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 // import bodyParser from 'body-parser'
 import cors from "cors";
 import cookieParser from 'cookie-parser';
-import tourRoute  from './Routes/tours.js';
-import userRoute  from './Routes/user.js';
-import authRoute  from './Routes/auth.js';
+import tourRoute from './Routes/tours.js';
+import userRoute from './Routes/user.js';
+import authRoute from './Routes/auth.js';
+import reviewRoute from './Routes/review.js';
+import bookingRoute from './Routes/booking.js';
 // import Tour from './models/Tour.js';
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT ||8000;
+const port = process.env.PORT || 8000;
+
+const corsOptions = {
+    origin:true,
+    credentials:true
+}
 
 // database connect
-mongoose.set('strictQuery',false);
-const connect= async()=>{
-    try{
+mongoose.set('strictQuery', false);
+const connect = async () => {
+    try {
         await mongoose.connect(process.env.MONGO_URI);
         // await mongoose.connect(process.env.MONGO_URI,{
         //     useNewUrlParser:true,
         //     useUnifiedTopology: true
         // });
         console.log("Mongodb connectedd successfully");
-    }catch(err){
-        console.error("not connected to mongo",err);
+    } catch (err) {
+        console.error("not connected to mongo", err);
     }
 
 }
 // middleware
 app.use(express.json()); // parse request of content type - application/json
-app.use(cors()) // enable CORS
+app.use(cors(corsOptions)) // enable CORS
 app.use(cookieParser());
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send('hello')
 })
 // old approach
@@ -42,12 +49,14 @@ app.get('/',(req,res)=>{
 //     res.send(savedTour);
 // })
 // new approach
-app.use('/tours',tourRoute);
-app.use('/users',userRoute);
-app.use('/auth',authRoute);
+app.use('/api/v1/tours', tourRoute);
+app.use('/api/v1/users', userRoute);
+app.use('/api/v1/auth', authRoute);
+app.use('/api/v1/review', reviewRoute);
+app.use('/api/v1/booking', bookingRoute);
 
 // listening
-app.listen(port,()=>{
+app.listen(port, () => {
     connect();
-    console.log('listening to ',port);
+    console.log('listening to ', port);
 })
