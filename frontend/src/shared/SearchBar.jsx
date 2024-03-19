@@ -1,21 +1,31 @@
 import React, { useRef } from 'react';
 import '../shared/SearchBar.css';
 import { Col, Form, FormGroup } from 'reactstrap';
+import { BASE_URL } from '../utils/config';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = () => {
 
     const locRef = useRef('');
     const dateref = useRef(null);
     const maxpeople = useRef(0);
+    const navigate = useNavigate();
 
-    const SearchHandler = () => {
+    const SearchHandler = async () => {
         const location = locRef.current.value;
-        const date = dateref.current.valueAsDate;  //converts string to Date object
-        const people = maxpeople.current.value;
+        // const date = dateref.current.valueAsDate;  //converts string to Date object
+        // const maxGroupSize = maxpeople.current.value;
 
-        if (location === '' || date === '' || people === '') {
+        if (location === '') { //|| date === '' || people === ''
             return alert('All fields Are Required');
         }
+
+        const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}`)
+
+        if (!res.ok) alert('something went wrong');
+        const result = await res.json();
+
+        navigate('/search-result-list', { state: { city: location, data: result.data } });
     }
 
     return (

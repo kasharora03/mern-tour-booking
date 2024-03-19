@@ -35,8 +35,9 @@ const Tours = () => {
             {
               tourData?.map(tour => (<Col lg='3' md='4' key={tour.id} className='mb-4'><TourCard tours={tour} /></Col>))
             }
-            <Col lg='12'>
+            <Col lg='12' className='b'>
               <div className='pagination d-flex align-items-center justify-content-center mt-4 gap-3'>
+              hwllo
               {[...Array(pageCount).keys()].map(number=>(
                 <span key={number} onClick={()=>setpage(number)} className={page===number? "active_page":""}>{number+1}</span>
               ))}

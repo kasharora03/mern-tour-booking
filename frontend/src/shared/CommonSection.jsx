@@ -9,7 +9,7 @@ const CommonSection = ({title}) => {
         <Container>
             <Row>
                 <Col lg='12'>   
-                    <img src={img1} className='ab'/>
+                    <img src={img1} className='w-100' alt='no img'/>
                 </Col>
             </Row>
         </Container>
