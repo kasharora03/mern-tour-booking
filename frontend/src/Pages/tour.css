@@ -20,3 +20,6 @@
 .active-accordion{
     background-color: #ff0000;
 }
+.cardcont{
+    overflow-x: hidden;
+}
