@@ -173,6 +173,7 @@ const tours = [
     photo: tourImg03,
     featured: false,
   },
+  
 ];
 
 export default tours;
