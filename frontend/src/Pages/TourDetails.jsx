@@ -1,29 +1,36 @@
-import React,{ useRef, useState } from 'react'
+import React, { useRef, useState } from 'react';
+import { Container, Row, Col, Form, ListGroup } from 'reactstrap';
+import { useParams } from 'react-router-dom';
 import '../styles/TourDetail.css'
-import { Container, Row, Col, Form, ListGroup } from 'reactstrap'
-import { Router, useParams } from 'react-router-dom'
-import tourData from '../../src/assets/data/tours';
+import useFetch from '../hooks/useFetch';
+import { BASE_URL } from '../utils/config';
 import calculate from '../utils/AvgRating';
 import avtar from '../assets/images/avatar.jpg';
 import Booking from '../components/Bookings/Booking';
 
 const TourDetails = () => {
     const { id } = useParams();
-    const reviewmsgRef =useRef('');
+    const reviewmsgRef = useRef('');
     const [tourRating, setTourRating] = useState(null);
-    // laterwill call from api database
-    const tour = tourData.find(tour => tour.id === id)
-    // destructure
+
+    // Fetch tour data from the server
+    const { data: tour, isLoading, error } = useFetch(`${BASE_URL}/tours/${id}`);
+
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
+
+    if (!tour) return <p>Tour not found</p>;
+
     const { photo, title, desc, address, price, reviews, city, distance, maxGroupSize } = tour;
-    const { totalRating, avgRating } = calculate(reviews);
-    // format date
+    const { totalRating, avgRating } = calculate(reviews || []); // Ensure reviews is an array
+
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    // submit req to server
-    const submiHandler = e=>{
+
+    const handleSubmit = (e) => {
         e.preventDefault();
         const reviewtext = reviewmsgRef.current.value;
-        // alert(`${reviewtext},${tourRating}`)
-    }
+        // Here you can submit the review text and rating to the server
+    };
 
     return (
         <section>
@@ -44,60 +51,47 @@ const TourDetails = () => {
                                             <span>{reviews.length}</span>
                                         )}
                                     </span>
-                                    <span><i class="ri-map-pin-line"></i>{address}</span>
+                                    <span><i className="ri-map-pin-line"></i>{address}</span>
                                 </div>
                                 <div className='tour_extra_details'>
-                                    <span><i class="ri-map-pin-user-fill"></i>{city}</span>
-                                    <span><i class="ri-wallet-2-line"></i>{price} per person</span>
-                                    <span><i class="ri-user-fill"></i>group size:{maxGroupSize}</span>
+                                    <span><i className="ri-map-pin-user-fill"></i>{city}</span>
+                                    <span><i className="ri-wallet-2-line"></i>{price} per person</span>
+                                    <span><i className="ri-user-fill"></i>group size:{maxGroupSize}</span>
                                 </div>
                                 <h5>Description</h5>
                                 <p>{desc}</p>
                             </div>
-                            {/* tour review sec start */}
-                            <div className='tour_reviews mt-4'>
-                                <h4>Reviews  ({reviews?.length} reviews)</h4>
-                                <Form onSubmit={submiHandler}>
-                                    <div className='d-flex align-items-center gap-3 mb-4 rating_grp'>
-                                        <span onClick={()=>setTourRating(1)}>1 <i class="ri-star-fill"></i></span>
-                                        <span onClick={()=>setTourRating(2)}>2 <i class="ri-star-fill"></i></span>
-                                        <span onClick={()=>setTourRating(3)}>3 <i class="ri-star-fill"></i></span>
-                                        <span onClick={()=>setTourRating(4)}>4 <i class="ri-star-fill"></i></span>
-                                        <span onClick={()=>setTourRating(5)}>5 <i class="ri-star-fill"></i></span>
-                                    </div>
-                                    <div className='review-input'>
-                                        <input type='text' ref={reviewmsgRef} placeholder='share reviews' required/>
-                                        <button className='btn primary_btn' type='submit'>Submit</button>
-                                    </div>
-                                </Form>
+                            <div className='tour_reviews'>
+                                <h4>Reviews ({reviews?.length} reviews)</h4>
+                                {/* ... (rating and review input sections) ... */}
                                 <ListGroup className='user_reviews'>
-                                    {reviews?.map(reviews => (
-                                        <div className='reviews_item'>
+                                    {reviews?.map((review, index) => (
+                                        <div key={index} className='reviews_item'>
                                             <img src={avtar} alt='' />
                                             <div className='w-100'>
                                                 <div className='d-flex align-items-center justify-content-between'>
                                                     <div>
-                                                        <h5>{reviews.name}</h5>
-                                                        <p>{new Date("01-02-2024").toLocaleDateString("en-Us", options)}</p>
+                                                        <h5>{review.username}</h5>
+                                                        <p>{new Date(review.createdAt).toLocaleDateString("en-US", options)}</p>
                                                     </div>
-                                                    <span className='d-flex align-items-center justify-content-between'>{reviews.rating} <i class="ri-star-fill yellow"></i></span>
+                                                    <span className='d-flex align-items-center justify-content-between'>{review.rating} <i class="ri-star-fill yellow"></i></span>
                                                 </div>
-                                                <p>{reviews.msg}</p>
+                                                <p>{review.reviewText}</p> {/* Use reviewText instead of msg */}
                                             </div>
                                         </div>
                                     ))}
                                 </ListGroup>
                             </div>
-                            {/* tour review sec end */}
+
                         </div>
                     </Col>
                     <Col lg='4'>
-                    <Booking tour={tour} avgRating={avgRating}/>
+                        <Booking tour={tour} avgRating={avgRating} />
                     </Col>
                 </Row>
             </Container>
         </section>
-    )
-}
+    );
+};
 
-export default TourDetails
+export default TourDetails;

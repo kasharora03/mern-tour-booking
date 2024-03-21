@@ -62,7 +62,7 @@ const Header = () => {
                                 <Button><Link to='/register' className='buttonname'>Register</Link></Button> */}
                             </div>
                             <span className='mobile_menu'>
-                                <i class="ri-menu-line"></i>
+                                <i className="ri-menu-line"></i>
                             </span>
                         </div>
 

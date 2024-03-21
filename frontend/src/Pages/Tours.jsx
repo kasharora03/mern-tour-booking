@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import '../styles/Home.css';
 import './tour.css'
 // import CommonSection from '../shared/CommonSection'
-import img1 from '../../src/assets/myimg/tourbanner.png'
+// import img1 from '../../src/assets/myimg/tourbanner.png'
 import banner from '../../src/assets/myimg/banner.PNG'
 import SearchBar from '../shared/SearchBar';
 import { Container, Row, Col } from 'reactstrap';
@@ -22,7 +22,8 @@ const Tours = () => {
   useEffect(()=>{
     const page=Math.ceil(tourCount/  8) 
     setPageCount(page);
-  },[page, tourCount]);
+    window.scrollTo(0,0);
+  },[page, tourCount,tours]);
   return (
     <div className='cardcont'>
       <img src={banner} className='ab' alt='no' />
