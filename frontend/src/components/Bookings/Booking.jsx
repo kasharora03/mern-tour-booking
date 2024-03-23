@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Booking.css';
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import {BASE_URL} from '../../utils/config';
 
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews } = tour;
+  const { price, reviews, title } = tour;
   const navigate = useNavigate();
-  const [credentials, setCredentials] = useState({
-    userId: "01",
-    userEmail: "ex@gmail.com",
+  const {user } = useContext(AuthContext);
+
+  const [booking, setBooking] = useState({
+    userId: user && user._id,
+    userEmail: user && user.email,
+    tourName: title,
     fullNAme: "",
     phone: "",
     guestSize: 1,
@@ -16,12 +21,12 @@ const Booking = ({ tour, avgRating }) => {
   });
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   const getMaxxValues = () => {
     const maxxThreshold = 5;
-    const { guestSize } = credentials;
+    const { guestSize } = booking;
     
     const maxx = guestSize < maxxThreshold ? guestSize : maxxThreshold;
     const serviceCharge = maxx < 5 ? 20 : 10;
@@ -33,10 +38,30 @@ const Booking = ({ tour, avgRating }) => {
   const { serviceCharge, updatedPrice } = getMaxxValues();
 
   const totalAmt =
-    Number(updatedPrice) * Number(credentials.guestSize) + Number(serviceCharge);
+    Number(updatedPrice) * Number(booking.guestSize) + Number(serviceCharge);
 
-  const handleClick = (e) => {
+  const handleClick = async(e) => {
     e.preventDefault();
+    console.log(booking)
+    try {
+      if(!user || user=== undefined|| user===null){
+        return alert ('Please Sign In!')
+      }
+      const res= await fetch(`${BASE_URL}/booking`,{
+        method:'post',
+        headers:{
+          'content-type':'application/json'
+        },
+        credentials:'include',
+        body:JSON.stringify(booking)
+      });
+      const result = await res.json();
+      if(!res.ok){
+        return alert (result.message)
+      }
+    } catch (error) {
+      alert(error.message)
+    }
     navigate('/thankyou');
   };
 

@@ -92,6 +92,8 @@
 /* newsletter */
 .newsletter{
     padding: 20px;
+    height: max-content !important;
+    margin-top: 0 !important;
 }
 .infocol{
     background: var(--primary-color);

@@ -67,8 +67,8 @@ const Accordian = () => {
   
     return (
       <Container fluid className="d-flex align-items-center justify-content-center mb-0">
-        <Row className="d-flex align-items-center justify-content-center w-50">
-          {/* <Col lg='3' > */}
+        <Row className="d-flex align-items-center justify-content-center">
+          <Col lg='7' >
             <div className="card1 text-center">
               <div className="card-body">
                 <h4 className="form-heading mb-4 text-center mt-3">Frequently Asked Questions</h4>
@@ -77,7 +77,7 @@ const Accordian = () => {
                 ))}
               </div>
             </div>
-          {/* </Col> */}
+          </Col>
         </Row>
       </Container>
     );

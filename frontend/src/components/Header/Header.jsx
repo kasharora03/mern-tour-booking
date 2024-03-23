@@ -1,9 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { Container, Row, Button } from 'reactstrap';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/myimg/mainlogo.png';
 
 import './Header.css';
+import {AuthContext} from './../../context/AuthContext'
 
 const NavLinks = [
     {
@@ -21,6 +22,12 @@ const NavLinks = [
 ]
 const Header = () => {
     const headerRef = useRef(null);
+    const navigate = useNavigate();
+    const{user,dispatch } = useContext(AuthContext);
+    const logout =() =>{
+        dispatch({type:'LOGOUT'});
+        navigate('/')
+    }
     const stickheaderFunc = () => {
         window.addEventListener('scroll', function () {
             if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
@@ -56,8 +63,18 @@ const Header = () => {
                         </div>
                         <div className='nav_right d-flex align-items-center gap-4'>
                             <div className='nav_btns d-flex align-items-center gap-4'>
+                            {
+                                user?<>
+                                    <h5 className='mb-0'>{user.username}</h5>
+                                    <Button color="warning" className='btn text-white fw-bold' onClick={logout}>Logout</Button>
+                                </> :
+                                <>
+
                                 <Button color="warning" outline className='headerbtn'><Link to='/login' className='yellow navbtn'>Login</Link></Button>
                                 <Button color="warning" outline className='headerbtn'><Link to='/register' className='yellow navbtn'>Register</Link></Button>
+                                </>
+                            }
+                               
                                 {/* <Button ><Link to='/login' className='buttonname'>Login</Link></Button>
                                 <Button><Link to='/register' className='buttonname'>Register</Link></Button> */}
                             </div>
