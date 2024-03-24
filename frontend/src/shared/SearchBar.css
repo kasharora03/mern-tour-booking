@@ -36,3 +36,17 @@
     padding:5px 10px;
     cursor:pointer;
 }
+
+/* responsiveness */
+@media only screen and (max-width:992px){
+    .search_bar{
+        width: 100%;
+
+    }
+    .search_bar form{
+        flex-wrap: wrap;
+    }
+    .search_bar form .form_group{
+width: 48%;
+    }
+}

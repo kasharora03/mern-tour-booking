@@ -4,7 +4,7 @@ const initial_state = {
     JSON.parse(localStorage.getItem('user')) : null,
     loading: false,
     error: null
-}
+} 
 
 export const AuthContext = createContext(initial_state)
 const authReducer = (state, action) => {
