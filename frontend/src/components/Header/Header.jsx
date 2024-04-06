@@ -71,7 +71,6 @@ const Header = () => {
                                         <Button color="warning" className='btn text-white fw-bold' onClick={logout}>Logout</Button>
                                     </> :
                                         <>
-
                                             <Button color="warning" outline className='headerbtn'><Link to='/login' className='yellow navbtn'>Login</Link></Button>
                                             <Button color="warning" outline className='headerbtn'><Link to='/register' className='yellow navbtn'>Register</Link></Button>
                                         </>

@@ -1,20 +1,21 @@
+// Booking.jsx
 import React, { useState, useContext } from 'react';
 import './Booking.css';
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { json, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import {BASE_URL} from '../../utils/config';
+import { BASE_URL } from '../../utils/config';
 
 const Booking = ({ tour, avgRating }) => {
   const { price, reviews, title } = tour;
   const navigate = useNavigate();
-  const {user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [booking, setBooking] = useState({
     userId: user && user._id,
     userEmail: user && user.email,
     tourName: title,
-    fullNAme: "",
+    fullName: "", // Fixed typo in fullName
     phone: "",
     guestSize: 1,
     bookAt: "",
@@ -27,42 +28,48 @@ const Booking = ({ tour, avgRating }) => {
   const getMaxxValues = () => {
     const maxxThreshold = 5;
     const { guestSize } = booking;
-    
+
     const maxx = guestSize < maxxThreshold ? guestSize : maxxThreshold;
     const serviceCharge = maxx < 5 ? 20 : 10;
     const updatedPrice = maxx < 5 ? 110 : 99;
     return { serviceCharge, updatedPrice };
   };
-  
 
   const { serviceCharge, updatedPrice } = getMaxxValues();
 
   const totalAmt =
     Number(updatedPrice) * Number(booking.guestSize) + Number(serviceCharge);
 
-  const handleClick = async(e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    console.log(booking)
     try {
-      if(!user || user=== undefined|| user===null){
-        return alert ('Please Sign In!')
+      if (!user || user === undefined || user === null) {
+        return alert('Please Sign In!');
       }
-      const res= await fetch(`${BASE_URL}/booking`,{
-        method:'post',
-        headers:{
-          'content-type':'application/json'
+      const res = await fetch(`${BASE_URL}/booking`, {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
         },
-        credentials:'include',
-        body:JSON.stringify(booking)
+        credentials: 'include',
+        body: JSON.stringify(booking)
       });
       const result = await res.json();
-      if(!res.ok){
-        return alert (result.message)
+      if (!res.ok) {
+        return alert(result.message);
       }
     } catch (error) {
-      alert(error.message)
+      alert(error.message);
     }
-    navigate('/thankyou');
+    navigate('/thankyou', { 
+      // Redirect to thank you page with booking details
+      state: {
+        totalAmt,
+        updatedPrice,
+        serviceCharge,
+        guestSize: booking.guestSize
+      }
+    });
   };
 
   return (

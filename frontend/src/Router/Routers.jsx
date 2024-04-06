@@ -19,7 +19,7 @@ const Routers = () => {
                 <Route exact  path='/login' element={<Login />} />
                 <Route exact  path='/register' element={<Register />} />
                 <Route exact  path='/tours/search' element={<SearchResultList />} />
-                <Route exact  path='thankyou' element={<Thankyou />} />
+                <Route exact  path='/thankyou' element={<Thankyou />} />
                 <Route path="/search-result-list" element={<SearchResultList />} />
                 {/* <Route path ='*' render={() => <Redirect to='/'/>}/> */}
             </Routes>

@@ -13,41 +13,41 @@ import {
 const TestimonialCarousel = () => {
     const testimonials = [
         {
-            name: "Anna Deynah",
-            role: "UX Designer",
-            imageSrc: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp",
-            quote:
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
-            stars: 1,
-        },
-        {
-            name: "Anna Deynah",
-            role: "UX Designer",
-            imageSrc: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp",
+            name: "NAME 1",
+            role: "User",
+            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
             quote:
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
             stars: 2,
         },
         {
-            name: "Anna Deynah",
-            role: "UX Designer",
-            imageSrc: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp",
+            name: "Name 2",
+            role: "User",
+            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
+            quote:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
+            stars: 2,
+        },
+        {
+            name: "Name 3",
+            role: "User",
+            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
             quote:
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
             stars: 5,
         },
         {
-            name: "Anna Deynah",
-            role: "UX Designer",
-            imageSrc: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp",
+            name: "Name 4",
+            role: "User",
+            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
             quote:
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
             stars: 5,
         },
         {
-            name: "Anna Deynah",
-            role: "UX Designer",
-            imageSrc: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp",
+            name: "Name 5",
+            role: "User",
+            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
             quote:
                 "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
             stars: 5,
