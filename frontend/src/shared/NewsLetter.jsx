@@ -42,19 +42,19 @@ const NewsLetter = () => {
           <div class="contactForm">
             <h2>Send a Message</h2>
             <form class="formBox" action='https://formspree.io/f/xgegzqpo' method='POST'>
-              <div class="inputBox w50">
-                <input type="text" required name="firstname" />
+              <div class="inputBox md:tw-w-[50%] tw-w-full ">
+                <input type="text" required name="firstname" className='pr-10'/>
                 <span>First Name</span>
               </div>
-              <div class="inputBox w50">
+              <div class="inputBox md:tw-w-[50%] tw-w-full">
                 <input type="text" required name="lastname" />
                 <span>Last Name</span>
               </div>
-              <div class="inputBox w50">
+              <div class="inputBox md:tw-w-[50%] tw-w-full">
                 <input type="email" required name="email" />
                 <span>Email Address</span>
               </div>
-              <div class="inputBox w50">
+              <div class="inputBox md:tw-w-[50%] tw-w-full">
                 <input type="text" required name="number" />
                 <span>Mobile Number</span>
               </div>
@@ -73,4 +73,4 @@ const NewsLetter = () => {
   )
 }
 
-export default NewsLetter
+export default NewsLetter;

@@ -3,6 +3,7 @@ import '../shared/SearchBar.css';
 import { Col, Form, FormGroup } from 'reactstrap';
 import { BASE_URL } from '../utils/config';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const SearchBar = () => {
 
@@ -17,12 +18,38 @@ const SearchBar = () => {
         // const maxGroupSize = maxpeople.current.value;
 
         if (location === '') { //|| date === '' || people === ''
-            return alert('All fields Are Required');
+            return swal({
+                icon: "error",
+                title: "Oops...",
+                text: "Location is Required!",
+                buttons: {
+                  confirm: {
+                    text: "OK",
+                    value: true,
+                    visible: true,
+                    className: "bgyellow", // Apply the class to the confirm button
+                    closeModal: true
+                  }
+                }
+              });
         }
 
         const res = await fetch(`${BASE_URL}/tours/search/getTourBySearch?city=${location}`)
 
-        if (!res.ok) alert('something went wrong');
+        if (!res.ok) swal({
+            icon: "error",
+            title: "Oops...",
+            text: "Something Went Wrong",
+            buttons: {
+              confirm: {
+                text: "OK",
+                value: true,
+                visible: true,
+                className: "bgyellow", // Apply the class to the confirm button
+                closeModal: true
+              }
+            }
+          });
         const result = await res.json();
 
         navigate('/search-result-list', { state: { city: location, data: result.data } });
@@ -30,7 +57,7 @@ const SearchBar = () => {
 
     return (
         <>
-            <Col lg='12'>
+            <Col lg='12' className='pb-4'>
                 <div className='search_bar'>
                     <Form className='d-flex align-items-center gap-4'>
                         <FormGroup className='d-flex gap-3 form_group form_group_fast mb-0'>

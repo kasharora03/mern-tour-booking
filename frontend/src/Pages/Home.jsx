@@ -14,52 +14,34 @@ import Footer from '../components/Footer/Footer.jsx'
 import Accordion from '../shared/Accordian';
 import NewsLetter from '../shared/NewsLetter.jsx';
 import { Link } from 'react-router-dom';
+import Her from '../components/Hero/Her.jsx';
 
 
 const Home = () => {
 
   return (
-    <>
-      <section className='justify-content-md-center'>
-        <Container>
-          <Row className='d-flex align-items-center h-100 homerow' id="topsec">
-            <Col lg='6'>
-              <div className='her_content'>
-                <div className='hero_subtitle d-flex align-items-center'>
-                  {/* <Subtitle subtitle={"Beyond Boundaries: Where Extraordinary Journeys Converge with Timeless Memories"} /> */}
-                  <p className='blue heropara'>
-                    Beyond Boundaries: Where Extraordinary Journeys Converge with Timeless Memories
-                  </p>
-                </div>
-                <h2 className='para'>Break free from the ordinary as <span className='yellow fw-bolder'>EasyGo</span> invites you to explore local treasures through well-curated itineraries and introduces a world where managing tour packages is an art of <span className='yellow fw-bolder'>creating unforgettable memories</span></h2>
-              </div>
-            </Col>
-            <Col lg='6'>
-              <img src={heroimg} alt='no img' />
-
-            </Col>
-          </Row>
-          <SearchBar />
-        </Container>
+    <div className='tw-w-full'>
+      <section className=' tw-flex tw-flex-col tw-justify-center'>
+        <Her/>
       </section>
       {/* services list */}
-      <section>
-        <Container>
-          <Row>
-            <Col lg='3'>
-              <h5 className='services_subtitle'>what we offer</h5>
+      <section className='my-5'>
+        <div className='tw-w-screen'>
+          <Row className='tw-d-flex tw-items-center lg:tw-px-24 tw-px-5'>
+            <Col lg='3' className=''>
+              <h5 className='tw-text-2xl md:tw-text-4xl yellow tw-italic'>What We Offer</h5>
             </Col>
             <ServiceList />
           </Row>
-        </Container>
+
+        </div>
       </section>
       {/* tours cards */}
-      <section>
+      <section className='mt-4'>
         <Container>
           <Row>
-            <Col lg="12" className='mb-5'>
-              <Subtitle subtitle={"Featured Tours"} />
-
+            <Col lg="12" className='mb-2'>
+            <h5 className='tw-text-2xl md:tw-text-4xl yellow tw-italic '>Featured Tours</h5>
             </Col>
           </Row>
           <Row>
@@ -69,30 +51,33 @@ const Home = () => {
       </section>
       {/* tours cards end*/}
       {/* exp sec start*/}
-      <section>
-        <Counter/>
-      </section>
+      {/* <div>
+        <Counter />
+      </div> */}
       {/* exp sec end*/}
       {/* gallry start */}
-      <Gallery/>
+      <section className='tw-mt-5 md:tw-mt-10'>
+      <Gallery />
+      </section>
+      
       {/* galley end */}
       {/* testimonial sec start */}
       <section>
       
-      <Container>
-      <Accordion/>
-      </Container>
-        
+        <Container>
+          <Accordion />
+        </Container>
+
+      </section>
+      <section className='tw-px-5'>
+        <NewsLetter />
       </section>
       <section>
-        <NewsLetter/>
+        <Testimonial />
       </section>
-      <section>
-        <Testimonial/>
-      </section>
-      
+
       {/* footer called in layout */}
-    </>
+    </div>
   )
 }
 export default Home;

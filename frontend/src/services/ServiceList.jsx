@@ -7,19 +7,19 @@ import {Col} from 'reactstrap';
 
 const  serrviceData=[
     {
-        imgUrl:require('../assets/myimg/ynotee.png'),
+        imgUrl:"ri-edit-2-line yellow icons",
         title:"Customization",
-        desc:"a standard placeholder text often used in design and typesetting, you can use the "
+        desc:"Tailor your journey to perfection with personalized itineraries, ensuring every moment reflects your unique travel style."
     },
     {
-        imgUrl: require('../assets/myimg/ymoney.png'),
+        imgUrl: "ri-hand-coin-line yellow icons",
         title:"Transparency",
-        desc:"a standard placeholder text often used in design and typesetting, you can use the "
+        desc:"Enjoy peace of mind knowing that our transparent pricing policy keeps you informed at every step, with no hidden costs or surprises."
     },
     {
-        imgUrl: require('../assets/myimg/ypeople.png'),
+        imgUrl: "ri-user-6-line yellow icons",
         title:"Trusted Guides",
-        desc:"a standard placeholder text often used in design and typesetting, you can use the "
+        desc:"Embark on your adventure with confidence, guided by our seasoned experts who bring local knowledge and professionalism to every tour."
     }
 ]
 
@@ -28,7 +28,7 @@ const ServiceList = () => {
     <>
     {
         serrviceData.map((item,index)=>
-            <Col lg='3' key={index}>
+            <Col lg='3' md='5' key={index}>
                 <ServiceCard item={item}/>
             </Col>
         )

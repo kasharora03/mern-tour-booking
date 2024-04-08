@@ -71,7 +71,7 @@ const Accordian = () => {
           <Col lg='7' >
             <div className="card1 text-center">
               <div className="card-body">
-                <h4 className="form-heading mb-4 text-center mt-3">Frequently Asked Questions</h4>
+                <h4 className=" tw-justify-start mb-4 mt-3 tw-text-2xl md:tw-text-4xl yellow tw-italic">Frequently Asked Questions</h4>
                 {faqs.map((faq, index) => (
                   <AccordionItem key={index} active={active} handleToggle={handleToggle} faq={faq} />
                 ))}

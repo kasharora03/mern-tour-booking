@@ -50,3 +50,9 @@
     font-weight: 500;
     color: var(--primary-color);
 }
+.bgyellow{
+    background-color: rgba(240,181,29,255);;
+}
+.bgyellow:hover{
+    background-color: rgba(240,181,29,255) !important;
+}

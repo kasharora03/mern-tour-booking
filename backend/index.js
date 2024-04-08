@@ -16,7 +16,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 const corsOptions = {
-    origin:true,
+    origin:'http://localhost:3000',
     credentials:true
 }
 
@@ -48,6 +48,7 @@ app.get('/', (req, res) => {
 //     const savedTour = await newTour.save()
 //     res.send(savedTour);
 // })
+
 // new approach
 app.use('/api/v1/tours', tourRoute);
 app.use('/api/v1/users', userRoute);
@@ -56,7 +57,7 @@ app.use('/api/v1/review', reviewRoute);
 app.use('/api/v1/booking', bookingRoute);
 
 // listening
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
     connect();
     console.log('listening to ', port);
 })

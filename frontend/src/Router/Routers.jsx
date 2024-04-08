@@ -7,6 +7,8 @@ import Login from '../Pages/Login';
 import Register from '../Pages/Register';
 import SearchResultList from '../Pages/SearchResultList';
 import Thankyou from '../Pages/Thankyou';
+import Blog from '../components/Blog/Blog';
+import NewsLetter from '../shared/NewsLetter';
 
 const Routers = () => {
     return (
@@ -17,7 +19,9 @@ const Routers = () => {
                 <Route exact  path='/tours' element={<Tours />} />
                 <Route exact  path='/tours/:id' element={<TourDetails />} />
                 <Route exact  path='/login' element={<Login />} />
+                <Route exact  path='/blog' element={<Blog />} />
                 <Route exact  path='/register' element={<Register />} />
+                <Route exact  path='/contact' element={<NewsLetter />} />
                 <Route exact  path='/tours/search' element={<SearchResultList />} />
                 <Route exact  path='/thankyou' element={<Thankyou />} />
                 <Route path="/search-result-list" element={<SearchResultList />} />

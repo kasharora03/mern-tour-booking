@@ -35,7 +35,7 @@
     top:0;
     left:0;
     /* box-shadow: 3px 3px 8px -3px #898989; */
-    z-index: 999;
+    z-index: 5000;
     position: sticky;
     transition: all ease-in-out 0s;
     /* background-color: rgba(223, 195, 16, 0.4); */
@@ -50,6 +50,7 @@
 .headerbtn{
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
     border-width:2px;
+    
 }
 .blue{
     color: rgba(8,29,62,255);
@@ -67,9 +68,24 @@
     font-weight: 300;
     font-size: 16px;
 }
-
+.navhead{
+    display: none;
+}
+.close-icon{
+    display: none;
+}
 /* responsiveness */
-@media only screen and (max-width:592px) {
+@media only screen and (max-width:770px) {
+    .headerbtn{
+        padding: 5px !important;
+    }
+    .close-icon{
+        display: block;
+        font-size: 1.5rem;
+        position: absolute;
+        right: 35%;
+        z-index: 1600;
+    }
     .logo img{
         width:30%;
         height: 40%;
@@ -82,6 +98,7 @@
         left: 0;
         background-color: rgba(0, 0, 0,0.411);
         display: none;
+        z-index: 1000;
     }
     .menu{
         position: absolute;
@@ -89,12 +106,15 @@
         flex-direction: column;
         top: 0;
         right: 0;
-        width: calc(100% - 75%);
+        width: 50%;
         height: 100%;
         background: white;
-        line-height: 0.5rem;
+        line-height: 3rem;
         justify-content: center;
-        z-index: 999;
+        text-align: left;
+        z-index: 1500;
+        padding-left: 0 !important;
+        
     }
     .show_menu{
         display:block
@@ -102,4 +122,30 @@
     .mobile_menu{
         display: block;
     }
+    .navhead{
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1600;
+    }
+    .navdiv{
+        display: flex;
+        justify-content: center;
+    }
+}
+/* Header.css */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: max-content;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }

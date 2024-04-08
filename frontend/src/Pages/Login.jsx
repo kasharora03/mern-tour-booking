@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
 import { Link, useNavigate } from 'react-router-dom';
 import logimg from '../assets/myimg/login.png';
 // import user from '../assets/myimg/user.png'
-
+import swal from 'sweetalert';
 import { AuthContext } from '../context/AuthContext';
 import { BASE_URL } from '../utils/config';
 
@@ -39,7 +39,22 @@ const Login = () => {
 
       const result = await res.json();
       if (!res.ok) {
-        alert(result.message);
+        swal({
+          icon: "error",
+          title: "Oops...",
+          text: result.message,
+          buttons: {
+            confirm: {
+              text: "OK",
+              value: true,
+              visible: true,
+              className: "bgyellow", // Apply the class to the confirm button
+              closeModal: true
+            }
+          }
+        });
+        
+        // alert(result.message);
         setIsLoggedIn(false); // Set flag to indicate failed login
       } else {
         console.log(result.data);

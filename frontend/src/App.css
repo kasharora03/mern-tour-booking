@@ -15,7 +15,8 @@
   box-sizing: border-box;
 }
 section{
-  padding: 20px;
+  /* padding: 20px; */
+  overflow-x: hidden;
 }
 body {
   font-family: var(--font-name);

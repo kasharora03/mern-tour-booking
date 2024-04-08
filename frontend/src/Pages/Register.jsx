@@ -5,6 +5,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import logimg from '../assets/myimg/login.png'
 import { AuthContext } from '../context/AuthContext';
 import { BASE_URL } from '../utils/config';
+import swal from 'sweetalert';
 
 
 const Register = () => {
@@ -31,13 +32,53 @@ const Register = () => {
       })
       const result = await res.json();
 
-      if(!res.ok) alert(result.message)
+      if(!res.ok) {
+        swal({
+          icon: "error",
+          title: "Oops...",
+          text: result.message,
+          buttons: {
+            confirm: {
+              text: "OK",
+              value: true,
+              visible: true,
+              className: "bgyellow", // Apply the class to the confirm button
+              closeModal: true
+            }
+          }
+        });
+      }
 
       dispatch({type: 'REGISTER_SUCCESS'})
-      alert("Account created Successfully!")
+      swal({
+        icon: "success",
+        text: 'Account Created Successfully',
+        buttons: {
+          confirm: {
+            text: "OK",
+            value: true,
+            visible: true,
+            className: "bgyellow", // Apply the class to the confirm button
+            closeModal: true
+          }
+        }
+      });
       navigate('/login')
     } catch (error) {
-      alert(error.message)
+      swal({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+        buttons: {
+          confirm: {
+            text: "OK",
+            value: true,
+            visible: true,
+            className: "bgyellow",
+            closeModal: true
+          }
+        }
+      });
     }
   }
   return (

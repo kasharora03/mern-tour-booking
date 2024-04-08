@@ -3,17 +3,26 @@ import { Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './TourCard.css';
 import calculate from '../utils/AvgRating';
-
+import errorimg from '../assets/myimg/errorimg.jpg';
 
 const TourCard = ({ tours }) => {
   const { _id, title, city, photo, price, featured, reviews } = tours;
-  const{totalRating,avgRating}= calculate(reviews)
-  
+  const { totalRating, avgRating } = calculate(reviews);
+
   return (
     <div className='tour_card'>
       <Card className='h-100'>
         <div className='tour_img'>
-          <img src={photo} alt='tour img' className='img-fluid imgtour' />
+          <div className=' tw-w-full'>
+            <img
+              src={photo ? photo : errorimg}
+              alt='tour img'
+              className=' imgtour tw-w-full'
+              onError={(e) => {
+                e.target.src = errorimg; // Set error image on error
+              }}
+            />
+          </div>
           {featured && <span>&nbsp;Featured</span>}
         </div>
 
@@ -45,7 +54,7 @@ const TourCard = ({ tours }) => {
         </CardBody>
       </Card>
     </div>
-  )
+  );
 }
 
 export default TourCard;

@@ -9,9 +9,8 @@ const Gallery = () => {
     <div>
       <Container>
         <Row>
-        <Subtitle subtitle={"gallery"}/>
             <Col lg='12'>
-            <h2 className='gallery_title'>visitors gallery</h2>
+            <h2 className='gallery_title tw-text-2xl md:tw-text-4xl yellow tw-italic'>Visitor's Gallery</h2>
             <MasonryGallry/>
             </Col>
         </Row>

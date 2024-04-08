@@ -17,8 +17,20 @@ const NavLinks = [
     },
     {
         path: '/tours',
-        display: 'Tours'
+        display: 'Tours',
+        dropdown: [
+            { path: '/tour1', display: 'Featured Tours' },
+            { path: '/tour2', display: 'All Tours' }
+        ]
     },
+    {
+        path: '/blog',
+        display: 'Blog'
+    },
+    {
+        path: '/contact',
+        display: 'Connect'
+    }
 ]
 const Header = () => {
     const headerRef = useRef(null);
@@ -47,20 +59,37 @@ const Header = () => {
         <header className='header' ref={headerRef}>
             <Container>
                 <Row>
-                    <div className='nav_wrapper d-flex align-items-center justify-content-between'>
+                    <div className='nav_wrapper d-flex align-items-center tw-justify-between'>
                         {/* logo */}
                         <div className='logo'>
-                            <img src={logo} alt='no logo' />
+                            <p className='tw-text-2xl md:tw-text-4xl blue tw-font-bold tw-pt-4'>EasyGo</p>
                         </div>
                         {/* menu */}
                         <div className='navigation' ref={menuRef} onClick={toggleMenu}>
-                            <ul className='menu d-flex align-items-center gap-5'>
+                            <i className="ri-close-line close-icon"></i> 
+                            <ul className='menu d-flex align-items-center tw-gap-5 md:tw-gap-4 lg:tw-gap-8'>
                                 {
                                     NavLinks.map((item, index) => (
-                                        <li className='nav_item blue lead' key={index}><NavLink to={item.path} className={navClass => navClass.isActive ? 'active_link' : ' '}>{item.display}</NavLink></li>
+                                        <li className='nav_item blue lead closeicon' key={index}>
+                                            {item.dropdown ? (
+                                                <div className="dropdown tw-font-bold tw-cursor-pointer">
+                                                    <span>{item.display}</span>
+                                                    <div className="dropdown-content">
+                                                        {item.dropdown.map((subItem, subIndex) => (
+                                                            <NavLink key={subIndex} to={subItem.path} className={navClass => navClass.isActive ? 'active_link' : ' '}>
+                                                                {subItem.display}
+                                                            </NavLink>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <NavLink to={item.path} className={navClass => navClass.isActive ? 'active_link' : ' '}>
+                                                    {item.display}
+                                                </NavLink>
+                                            )}
+                                        </li>
                                     ))
                                 }
-
                             </ul>
                         </div>
                         <div className='nav_right d-flex align-items-center gap-4'>
@@ -75,15 +104,11 @@ const Header = () => {
                                             <Button color="warning" outline className='headerbtn'><Link to='/register' className='yellow navbtn'>Register</Link></Button>
                                         </>
                                 }
-
-                                {/* <Button ><Link to='/login' className='buttonname'>Login</Link></Button>
-                                <Button><Link to='/register' className='buttonname'>Register</Link></Button> */}
                             </div>
                             <span className='mobile_menu' onClick={toggleMenu}>
                                 <i className="ri-menu-line"></i>
                             </span>
                         </div>
-
                     </div>
                 </Row>
             </Container>
