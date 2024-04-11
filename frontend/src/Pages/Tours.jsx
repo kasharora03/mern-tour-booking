@@ -28,14 +28,15 @@ const Tours = () => {
     <div className='cardcont'>
       {/* <img src={banner} className='ab' alt='no' /> */}
       {/* <img src="https://www.sotc.in/images/Emailers/2019/april/travel-insurance/buy-travel-insurance-new.jpg" className='ab' alt='no'/> */}
-      <section className='text-center'>
-        <Container className='tw-flex tw-justify-center py-2'>
-          <Row className='d-flex justify-content-center align-items-center '>
+      <section className='tw-flex tw-justify-centermx-auto'>
+        <Container>
+          <Row className='d-flex justify-content-center align-items-center'>
             <SearchBar />
           </Row>
         </Container>
-
       </section>
+
+      {/* <SearchBar /> */}
       <section className='text-center py-2'>
         <Container >
           {loading && <Spinner color="warning">
@@ -45,7 +46,7 @@ const Tours = () => {
           {
             !loading && !error && <Row>
               {
-                tours?.map(tour => (<Col lg='3' md='4' key={tour._id} className='mb-4'><TourCard tours={tour} /></Col>))
+                tours?.map(tour => (<Col lg='3' md='4' sm='6' key={tour._id} className='mb-4'><TourCard tours={tour} /></Col>))
               }
               <Col lg='12' className='b'>
                 <div className='pagination d-flex align-items-center justify-content-center mt-4 gap-3'>

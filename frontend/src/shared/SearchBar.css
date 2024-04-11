@@ -9,7 +9,7 @@
     padding-bottom: 0 !important;
     border-radius: 50px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    width: max-content;
+    width: 50%;
     margin-top:20px;
 }
 .form_group span{
@@ -43,12 +43,7 @@
         width: 100%;
 
     }
-    .search_bar form{
-        flex-wrap: wrap;
-    }
-    .search_bar form .form_group{
-        width: 48%;
-    }
+  
 }
 @media only screen and (max-width:576px){
     .search_bar form .form_group{

@@ -3,27 +3,27 @@ import React, { useState, useRef } from "react";
 import { Container, Row, Col } from 'reactstrap';
 import './Acc.css';
 const faqs = [
-    {
-        id: 1,
-        header: "What is Lorem Ipsum?",
-        text: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`
-    },
-    {
-        id: 2,
-        header: "Where does it come from?",
-        text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. `
-    },
-    {
-        id: 3,
-        header: "Why do we use it?",
-        text: `Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature,`
-    },
-    {
-        id: 4,
-        header: "Where can I get some?",
-        text: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`
-    }
-]
+  {
+      id: 1,
+      header: "What regions of India do your tours cover?",
+      text: `Our tours cover diverse regions of India, including popular destinations like Rajasthan, Kerala, Himachal Pradesh, Goa, and more. We also offer tours to lesser-known but equally enchanting places.`,
+  },
+  {
+      id: 2,
+      header: "Are your guides knowledgeable about Indian history and culture?",
+      text: `Yes, our guides are highly knowledgeable about Indian history, culture, and traditions. They are passionate about sharing insights into the rich heritage of India with our travelers.`,
+  },
+  {
+      id: 3,
+      header: "What measures are in place to ensure the safety of travelers?",
+      text: `Safety is our utmost priority. We adhere to strict safety standards and closely monitor travel advisories. Our guides are trained in first aid and emergency response procedures to ensure a secure journey.`,
+  },
+  {
+      id: 4,
+      header: "Do you offer specialized tours for wildlife enthusiasts?",
+      text: `Absolutely! We offer specialized wildlife tours to national parks and sanctuaries across India. Experience the thrill of spotting tigers, elephants, and other exotic wildlife in their natural habitats.`,
+  }
+];
 
 const AccordionItem = (props) => {
     const contentEl = useRef();

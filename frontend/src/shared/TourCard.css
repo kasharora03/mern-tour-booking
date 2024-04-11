@@ -20,6 +20,9 @@
 .tour_img{
     position: relative;
 }
+.tour_img img{
+    height: 200px !important;
+}
 .tour_img span{
     position: absolute;
     background-color: var(--primary-color);

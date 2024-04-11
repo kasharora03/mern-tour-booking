@@ -148,7 +148,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   /* background:rgba(30,53,111,255); */
   /* background: rgba(0,163,136,255); */
 }
@@ -448,4 +448,25 @@
 }
 .custom-notification-container{
 background-color:var(--yellow-color) !important;
+}
+.explore a{
+  text-decoration: none;
+  color: white;
+}
+.explore{
+  display: flex;
+align-items: end;
+}
+.over{
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+/* searchbar */
+.searchsec{
+  display: flex !important;
+  justify-content: center;
+}
+.service{
+  background-color: var(--primary-color);
 }

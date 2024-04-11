@@ -1,40 +1,45 @@
 import React from 'react';
 import ServiceCard from './ServiceCard';
-import {Col} from 'reactstrap';
-// import people from '../assets/myimg/ypeople.png';
-// const money = require('../assets/myimg/ymoney.png');
-// const custom = require('../assets/myimg/ynote.png');
+import { Col } from 'reactstrap';
 
-const  serrviceData=[
-    {
-        imgUrl:"ri-edit-2-line yellow icons",
-        title:"Customization",
-        desc:"Tailor your journey to perfection with personalized itineraries, ensuring every moment reflects your unique travel style."
-    },
-    {
-        imgUrl: "ri-hand-coin-line yellow icons",
-        title:"Transparency",
-        desc:"Enjoy peace of mind knowing that our transparent pricing policy keeps you informed at every step, with no hidden costs or surprises."
-    },
-    {
-        imgUrl: "ri-user-6-line yellow icons",
-        title:"Trusted Guides",
-        desc:"Embark on your adventure with confidence, guided by our seasoned experts who bring local knowledge and professionalism to every tour."
-    }
-]
+const serrviceData = [
+  {
+    imgUrl: "ri-edit-2-line yellow icons",
+    title: "Customization",
+    points: [
+      "Tailor your journey to perfection with personalized itineraries.",
+      "Ensure every moment reflects your unique travel style.",
+    ],
+  },
+  {
+    imgUrl: "ri-hand-coin-line yellow icons",
+    title: "Transparency",
+    points: [
+      "Enjoy peace of mind with our transparent pricing policy.",
+      "Stay informed at every step with no hidden costs or surprises.",
+    ],
+  },
+  {
+    imgUrl: "ri-user-6-line yellow icons",
+    title: "Trusted Guides",
+    points: [
+      "Embark on your adventure with confidence.",
+      "Guided by our seasoned experts who bring local knowledge.",
+      "Professionalism to every tour.",
+    ],
+  },
+];
 
 const ServiceList = () => {
   return (
-    <>
-    {
-        serrviceData.map((item,index)=>
-            <Col lg='3' md='5' key={index}>
-                <ServiceCard item={item}/>
-            </Col>
-        )
-    }
-    </>
-  )
-}
-;
-export default ServiceList
+    <div className="d-flex flex-wrap justify-content-between">
+      {serrviceData.map((item, index) => (
+        <Col lg='3' md='5' key={index} className="mb-4">
+          <ServiceCard item={item} />
+        </Col>
+      ))}
+    </div>
+  );
+};
+
+export default ServiceList;

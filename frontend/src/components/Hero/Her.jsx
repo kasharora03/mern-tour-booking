@@ -22,6 +22,14 @@ const Her = () => {
           <img src={heroimg} alt='no img' />
         </Col>
       </Row>
+      {/* <section className='text-center'>
+        <Container className='tw-flex tw-justify-center py-2'>
+          <Row className='d-flex justify-content-center align-items-center '>
+            <SearchBar />
+          </Row>
+        </Container>
+
+      </section> */}
       <SearchBar />
     </Container>
   )

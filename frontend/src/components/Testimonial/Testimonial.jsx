@@ -13,43 +13,43 @@ import {
 const TestimonialCarousel = () => {
     const testimonials = [
         {
-            name: "NAME 1",
-            role: "User",
-            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
+            name: "Ramesh Kumar",
+            role: "Traveler",
+            imageSrc: "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png",
             quote:
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
-            stars: 2,
-        },
-        {
-            name: "Name 2",
-            role: "User",
-            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
-            quote:
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
-            stars: 2,
-        },
-        {
-            name: "Name 3",
-            role: "User",
-            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
-            quote:
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
+                "Excellent service! The tour guides were very knowledgeable and friendly. I had a wonderful experience exploring India with this travel agency.",
             stars: 5,
         },
         {
-            name: "Name 4",
-            role: "User",
-            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
+            name: "Sunita Patel",
+            role: "Explorer",
+            imageSrc: "https://cdn-icons-png.flaticon.com/512/6833/6833591.png",
             quote:
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
+                "I'm impressed with the professionalism of this travel agency. They customized my tour according to my preferences and made sure I had a memorable trip.",
             stars: 5,
         },
         {
-            name: "Name 5",
-            role: "User",
-            imageSrc: "https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png",
+            name: "Amit Singh",
+            role: "Adventurer",
+            imageSrc: "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png",
             quote:
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic tenetur.",
+                "Had an amazing time exploring the wildlife sanctuaries in India with this agency. The guides were experienced and made the safari unforgettable.",
+            stars: 4,
+        },
+        {
+            name: "Priya Sharma",
+            role: "Nature Lover",
+            imageSrc: "https://cdn-icons-png.flaticon.com/512/6833/6833591.png",
+            quote:
+                "I highly recommend this travel agency for anyone planning a trip to India. They provided excellent service and ensured a hassle-free experience.",
+            stars: 5,
+        },
+        {
+            name: "Ajay Verma",
+            role: "History Enthusiast",
+            imageSrc: "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_man_people_person_avatar_white_tone_icon_159363.png",
+            quote:
+                "The historical tours organized by this agency exceeded my expectations. The guides were passionate about Indian history and shared fascinating insights.",
             stars: 5,
         },
     ];
@@ -71,7 +71,7 @@ const TestimonialCarousel = () => {
     return (
         <>
         <MDBContainer className="py-5">
-        <h4 className='mainhead'>Testimonial</h4>
+        <h2 className='gallery_title tw-text-2xl md:tw-text-4xl yellow tw-italic'>Testimonials</h2>
             <MDBCarousel showControls dark>
                 {testimonialChunks.map((chunk, index) => (
                     <MDBCarouselItem key={index} className={index === 0 ? "active" : ""}>

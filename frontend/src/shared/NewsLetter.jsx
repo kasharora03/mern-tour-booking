@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 // import { Container, Row, Col, Button } from 'reactstrap'
 import '../styles/Home.css';
 // import emailjs from 'emailjs-com';
@@ -6,9 +6,12 @@ import { Link } from 'react-router-dom';
 
 
 const NewsLetter = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
   return (
-    <div className='newsletter'>
-      <section id="cont" class="Contact">
+    <div className='newsletter '>
+      <section id="cont" className="Contact tw-my-5">
         <div class="containerr">
           <div class="contactInfo">
             <div>

@@ -10,14 +10,14 @@ const TourCard = ({ tours }) => {
   const { totalRating, avgRating } = calculate(reviews);
 
   return (
-    <div className='tour_card'>
-      <Card className='h-100'>
+    <div className='tour_card h-100 d-flex flex-column'>
+      <Card className='flex-grow-1'>
         <div className='tour_img'>
           <div className=' tw-w-full'>
             <img
               src={photo ? photo : errorimg}
               alt='tour img'
-              className=' imgtour tw-w-full'
+              className=' imgtour tw-w-full' 
               onError={(e) => {
                 e.target.src = errorimg; // Set error image on error
               }}
@@ -28,7 +28,7 @@ const TourCard = ({ tours }) => {
 
         <CardBody className='d-flex flex-column'>
           <div className='card_top d-flex align-items-center justify-content-between'>
-            <span className='tour_location d-flex align-items-center gap-1'>
+            <span className='tour_location d-flex align-items-center gap-1 tw-font-medium'>
               <i className='ri-map-pin-line'></i>
               {city}
             </span>
@@ -42,11 +42,11 @@ const TourCard = ({ tours }) => {
               )}
             </span>
           </div>
-          <h5 className='tour_title '>
+          {/* <h5 className='tour_title '>
             <Link to={`/tours/${_id}`}>{title}</Link>
-          </h5>
+          </h5> */}
           <div className='card_bottom d-flex align-items-center justify-content-between mt-3'>
-            <h5>${price}<span>/pp</span></h5>
+            <h5>₹{price}<span>/pp</span></h5>
             <button className='booking_btn'>
               <Link to={`/tours/${_id}`}>Book Now</Link>
             </button>

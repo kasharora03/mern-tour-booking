@@ -16,6 +16,18 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    pickUp: {
+      type: String,
+      required: true,
+    },
+    time: {
+      type:String,
+      required: true,
+    },
+    custom: {
+      type:String,
+      required: true,
+    },
     guestSize:{
         type: Number,
         required:true,

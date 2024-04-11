@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useContext } from 'react';
 import { Container, Row, Button } from 'reactstrap';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import logo from '../../assets/myimg/mainlogo.png';
+
 
 import './Header.css';
 import { AuthContext } from './../../context/AuthContext'
@@ -11,17 +11,17 @@ const NavLinks = [
         path: '/home',
         display: 'Home'
     },
-    {
-        path: '/about',
-        display: 'About'
-    },
+    // {
+    //     path: '/about',
+    //     display: 'About'
+    // },
     {
         path: '/tours',
         display: 'Tours',
-        dropdown: [
-            { path: '/tour1', display: 'Featured Tours' },
-            { path: '/tour2', display: 'All Tours' }
-        ]
+        // dropdown: [
+        //     { path: '/tour1', display: 'Featured Tours' },
+        //     { path: '/tour2', display: 'All Tours' }
+        // ]
     },
     {
         path: '/blog',
@@ -62,7 +62,7 @@ const Header = () => {
                     <div className='nav_wrapper d-flex align-items-center tw-justify-between'>
                         {/* logo */}
                         <div className='logo'>
-                            <p className='tw-text-2xl md:tw-text-4xl blue tw-font-bold tw-pt-4'>EasyGo</p>
+                            <Link to='/'><p className='tw-text-2xl md:tw-text-4xl blue tw-font-bold tw-pt-2 nounder'>EasyGo</p></Link>
                         </div>
                         {/* menu */}
                         <div className='navigation' ref={menuRef} onClick={toggleMenu}>

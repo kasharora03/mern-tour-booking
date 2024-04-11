@@ -5,6 +5,7 @@ import { Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { json, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { BASE_URL } from '../../utils/config';
+import swal from 'sweetalert';
 
 const Booking = ({ tour, avgRating }) => {
   const { price, reviews, title } = tour;
@@ -30,52 +31,91 @@ const Booking = ({ tour, avgRating }) => {
     const { guestSize } = booking;
 
     const maxx = guestSize < maxxThreshold ? guestSize : maxxThreshold;
-    const serviceCharge = maxx < 5 ? 20 : 10;
-    const updatedPrice = maxx < 5 ? 110 : 99;
+    const serviceCharge = Math.floor(maxx < 5 ? price / 100 : price / 150);
+    const updatedPrice = maxx < 5 ? price : price-200;
     return { serviceCharge, updatedPrice };
   };
 
   const { serviceCharge, updatedPrice } = getMaxxValues();
 
-  const totalAmt =
-    Number(updatedPrice) * Number(booking.guestSize) + Number(serviceCharge);
+  const totalAmt = Math.floor(
+    Number(updatedPrice) * Number(booking.guestSize) + Number(serviceCharge)
+  );
 
-  const handleClick = async (e) => {
-    e.preventDefault();
-    try {
-      if (!user || user === undefined || user === null) {
-        return alert('Please Sign In!');
+    const handleClick = async (e) => {
+      e.preventDefault();
+      try {
+        if (!user || user === undefined || user === null) {
+          swal({
+            icon: "error",
+            text: 'Please Sign In!',
+            buttons: {
+              confirm: {
+                text: "OK",
+                value: true,
+                visible: true,
+                className: "bgyellow",
+                closeModal: true
+              }
+            }
+          });
+          // Return from function if user is not logged in
+          return;
+        }
+        const res = await fetch(`${BASE_URL}/booking`, {
+          method: 'post',
+          headers: {
+            'content-type': 'application/json'
+          },
+          credentials: 'include',
+          body: JSON.stringify(booking)
+        });
+        const result = await res.json();
+        if (!res.ok) {
+          swal({
+            icon: "error",
+            text: result.message,
+            buttons: {
+              confirm: {
+                text: "OK",
+                value: true,
+                visible: true,
+                className: "bgyellow",
+                closeModal: true
+              }
+            }
+          });
+        }
+      } catch (error) {
+        swal({
+          icon: "error",
+          text: error.message,
+          buttons: {
+            confirm: {
+              text: "OK",
+              value: true,
+              visible: true,
+              className: "bgyellow",
+              closeModal: true
+            }
+          }
+        });
       }
-      const res = await fetch(`${BASE_URL}/booking`, {
-        method: 'post',
-        headers: {
-          'content-type': 'application/json'
-        },
-        credentials: 'include',
-        body: JSON.stringify(booking)
+      navigate('/thankyou', { 
+        state: {
+          totalAmt,
+          updatedPrice,
+          serviceCharge,
+          guestSize: booking.guestSize
+        }
       });
-      const result = await res.json();
-      if (!res.ok) {
-        return alert(result.message);
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-    navigate('/thankyou', { 
-      // Redirect to thank you page with booking details
-      state: {
-        totalAmt,
-        updatedPrice,
-        serviceCharge,
-        guestSize: booking.guestSize
-      }
-    });
-  };
+    };
+    
 
   return (
     <div className='booking'>
       <div className='booking_top d-flex justify-content-between align-items-center'>
-        <h3>${price}<span>per person</span></h3>
+        <h3>₹{price}<span>per person</span></h3>
         <span className='tour_rating d-flex align-items-center gap-1'>
           <i className='ri-star-fill '></i>
           {avgRating === 0 ? null : avgRating}
@@ -92,6 +132,15 @@ const Booking = ({ tour, avgRating }) => {
           <FormGroup>
             <input type='number' placeholder='Phone Number' id='phone' required onChange={handleChange} />
           </FormGroup>
+          <FormGroup>
+            <input type='text' placeholder='Pickup Location' id='pickUp' required onChange={handleChange} />
+          </FormGroup>
+          <FormGroup>
+            <input type='time' placeholder='Pickup Location' id='time' required onChange={handleChange} />
+          </FormGroup>
+          <FormGroup>
+            <input type='text' placeholder='Add customization details' id='custom' required onChange={handleChange} />
+          </FormGroup>
           <FormGroup className='d-flex  gap-3'>
             <input type='date' placeholder='' id='bookAt' required onChange={handleChange} />
             <input type='number' placeholder='Guest' id='guestSize' required onChange={handleChange} />
@@ -104,17 +153,17 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className='border-0 px-0'>
             <h5 className='d-flex align-items-center gap-1'>
-              ${updatedPrice} <i className="ri-close-line"></i> 1 person
+            ₹{updatedPrice} <i className="ri-close-line"></i> 1 person
             </h5>
-            <h5>${updatedPrice}</h5>
+            <h5>₹{updatedPrice}</h5>
           </ListGroupItem>
           <ListGroupItem className='border-0 px-0'>
             <h5>Service Charges</h5>
-            <h5>${serviceCharge} </h5>
+            <h5>₹{serviceCharge} </h5>
           </ListGroupItem>
           <ListGroupItem className='border-0 px-0'>
             <h5 className='total'>Total</h5>
-            <h5 className='total'>${totalAmt}</h5>
+            <h5 className='total'>₹{totalAmt}</h5>
           </ListGroupItem>
         </ListGroup>
         <Button className='btn primary_btn w-100 mt-4' onClick={handleClick}>

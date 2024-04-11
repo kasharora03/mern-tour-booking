@@ -3,6 +3,10 @@
     height: 80px;
     line-height: 80px;
 }
+.logo a{
+    text-decoration: none;
+    
+}
 .logo img{
     top:0 !important;
     width: 120%;  
