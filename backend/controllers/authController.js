@@ -2,30 +2,53 @@ import User from "../models/User.js";
 import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
 // user register
-export const register = async(req,res)=>{
-    // hashing password
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password,salt);
+export const register = async (req, res) => {
     try {
+        // Check if the username is already taken
+        const existingUsername = await User.findOne({ username: req.body.username });
+
+        if (existingUsername) {
+            return res.status(400).json({
+                success: false,
+                message: "Username already taken"
+            });
+        }
+
+        // Check if the email is already registered
+        const existingUser = await User.findOne({ email: req.body.email });
+
+        if (existingUser) {
+            return res.status(400).json({
+                success: false,
+                message: "Email already registered"
+            });
+        }
+
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(req.body.password, salt);
+
         const newUser = new User({
-            username: req.body.username, 
-            email:req.body.email,
-            password:hash, //changed to hashes one instead of req.bpdy.password
-            photo:req.body.photo,
-        })
+            username: req.body.username,
+            email: req.body.email,
+            password: hash,
+            photo: req.body.photo,
+        });
+
         await newUser.save();
         res.status(200).json({
-            success:true,
+            success: true,
             message: "Account has been created",
-            data:newUser
-        })
+            data: newUser
+        });
     } catch (error) {
         res.status(500).json({
-            success:false,
-            message: "Failed to create. Try Again",
-        })
+            success: false,
+            message: "Failed to create. Try Again"
+        });
     }
 };
+
+
 // user login
 export const login = async(req,res)=>{
     const email = req.body.email;

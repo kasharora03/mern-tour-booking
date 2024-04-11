@@ -6,7 +6,7 @@ import '../../styles/Home.css';
 
 const Her = () => {
   return (
-    <Container>
+    <Container className=''>
       <Row className='justify-content-center align-items-center h-100 homerow' id="topsec">
         <Col lg='6' className='tw-flex tw-justify-center'>
           <div className='her_content'>
@@ -30,7 +30,9 @@ const Her = () => {
         </Container>
 
       </section> */}
+      <div className='tw-my-3'>
       <SearchBar />
+      </div>
     </Container>
   )
 }

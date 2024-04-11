@@ -28,13 +28,12 @@ const Tours = () => {
     <div className='cardcont'>
       {/* <img src={banner} className='ab' alt='no' /> */}
       {/* <img src="https://www.sotc.in/images/Emailers/2019/april/travel-insurance/buy-travel-insurance-new.jpg" className='ab' alt='no'/> */}
-      <section className='tw-flex tw-justify-centermx-auto'>
+     
         <Container>
           <Row className='d-flex justify-content-center align-items-center'>
             <SearchBar />
           </Row>
         </Container>
-      </section>
 
       {/* <SearchBar /> */}
       <section className='text-center py-2'>

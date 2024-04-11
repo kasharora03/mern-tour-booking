@@ -43,6 +43,13 @@
 .sociallink{
     text-decoration: none;
 }
-.footericon{
+.social .sociallink {
     color: var(--yellow-color);
-}
+    /* This style ensures the color and transition are applied to the icons */
+    transition: color 0.3s ease;
+  }
+  
+  .social .sociallink:hover .footericon {
+    /* When hovering over the social link, apply the transform to the icon */
+    transform: scale(1.5); /* Adjust the scale factor as needed */
+  }

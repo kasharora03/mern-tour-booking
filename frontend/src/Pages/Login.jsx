@@ -73,10 +73,8 @@ const Login = () => {
       setPasswordVisible(false);
     }, 1000);
   };
-
-
   return (
-    <section>
+    <section className='md:tw-my-5'>
       <Container>
         <Row className='lg:tw-mb-10 lg:tw-mt-10'>
           <Col lg='8' className='login_cont d-flex justify-content-space-between m-auto'>

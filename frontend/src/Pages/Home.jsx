@@ -1,16 +1,10 @@
 import React from 'react';
 import '../styles/Home.css';
 import { Container, Row, Col, Button } from 'reactstrap';
-import Subtitle from '../shared/Subtitle';
-import heroimg from '../assets/myimg/heroimg.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SearchBar from '../shared/SearchBar';
-import ServiceList from '../services/ServiceList';
 import FeaturedTourList from '../components/FeaturedTours/FeaturedTourList';
-import Counter from '../shared/Counter';
 import Gallery from '../shared/Gallery';
 import Testimonial from '../components/Testimonial/Testimonial';
-import Footer from '../components/Footer/Footer.jsx'
 import Accordion from '../shared/Accordian';
 import NewsLetter from '../shared/NewsLetter.jsx';
 import { Link } from 'react-router-dom';
@@ -25,15 +19,13 @@ const Home = () => {
         <Her />
       </section>
       {/* services list */}
-      <section>
+      {/* <section>
         <Container className='service'>
           <Row className='tw-flex tw-justify-around'>
-            {/* <Col md='3'> */}
             <ServiceList/>
-            {/* </Col> */}
           </Row>
         </Container>
-      </section>
+      </section> */}
       
       {/* tours cards */}
       <section className='mt-4'>

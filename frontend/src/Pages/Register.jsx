@@ -24,30 +24,7 @@ const Register = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-
-    e.preventDefault();
     try {
-      // Password validation regex
-      const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    
-      if (!passwordRegex.test(credentials.password)) {
-        swal({
-          icon: "warning",
-          text: "Password must be at least 8 characters long with at least one uppercase letter, one number, and one special character.",
-          buttons: {
-            confirm: {
-              text: "OK",
-              value: true,
-              visible: true,
-              className: "bgyellow", // Apply the class to the confirm button
-              closeModal: true
-            }
-          }
-        });
-        return; // Return from function if password doesn't meet requirements
-      }
-    
-      // Making registration request
       const res = await fetch(`${BASE_URL}/auth/register`, {
         method: 'post',
         headers: {
@@ -56,24 +33,41 @@ const Register = () => {
         body: JSON.stringify(credentials)
       });
       const result = await res.json();
-    
+  
       if (!res.ok) {
-        swal({
-          icon: "error",
-          title: "Oops...",
-          text: result.message,
-          buttons: {
-            confirm: {
-              text: "OK",
-              value: true,
-              visible: true,
-              className: "bgyellow", // Apply the class to the confirm button
-              closeModal: true
+        if (res.status === 400 && result.message === "User already exists") {
+          swal({
+            icon: "warning",
+            text: "User already exists",
+            buttons: {
+              confirm: {
+                text: "OK",
+                value: true,
+                visible: true,
+                className: "bgyellow",
+                closeModal: true
+              }
             }
-          }
-        });
+          });
+        } else {
+          swal({
+            icon: "error",
+            title: "Oops...",
+            text: result.message,
+            buttons: {
+              confirm: {
+                text: "OK",
+                value: true,
+                visible: true,
+                className: "bgyellow",
+                closeModal: true
+              }
+            }
+          });
+        }
+        return;
       }
-    
+  
       dispatch({ type: 'REGISTER_SUCCESS' });
       swal({
         icon: "success",
@@ -83,7 +77,7 @@ const Register = () => {
             text: "OK",
             value: true,
             visible: true,
-            className: "bgyellow", // Apply the class to the confirm button
+            className: "bgyellow",
             closeModal: true
           }
         }
@@ -105,8 +99,8 @@ const Register = () => {
         }
       });
     }
-    
   };
+  
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(true);

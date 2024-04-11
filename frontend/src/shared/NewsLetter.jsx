@@ -35,7 +35,6 @@ const NewsLetter = () => {
             </div>
             <ul className='sci'>
             <li><Link><i class="ri-youtube-fill text-white"></i></Link></li>
-            <li><Link><i class="ri-github-fill text-white"></i></Link></li>
             <li><Link><i class="ri-instagram-fill text-white"></i></Link></li>
               <li><Link><i class="ri-facebook-circle-fill text-white "></i></Link></li>
               <li><Link><i class="ri-whatsapp-fill text-white"></i></Link></li>

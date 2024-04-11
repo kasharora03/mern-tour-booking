@@ -34,7 +34,7 @@ const AccordionItem = (props) => {
                 <div className="rc-accordion-card">
             <div className="rc-accordion-header bb">
             
-                <div className={`rc-accordion-toggle p-3 ${active === id ? 'active' : ''}`} onClick={() => handleToggle(id)}>
+                <div className={`rc-accordion-toggle bb p-3 ${active === id ? 'active' : ''}`} onClick={() => handleToggle(id)}>
                     <h5 className="rc-accordion-title">{header}</h5>
                     <i class="ri-arrow-down-s-line plus"></i>
                 </div>

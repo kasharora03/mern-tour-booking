@@ -61,8 +61,7 @@ const SearchBar = () => {
 
     return (
         <>
-
-            <Col lg='12' className='pb-4 '>
+            <Col lg='12' className='pb-4 tw-flex tw-justify-center'>
                 <div className='search_bar tw-px-6'>
                     <Form className='d-flex align-items-center gap-4 tw-justify-between'>
                         <FormGroup className='d-flex gap-3 form_group form_group_fast mb-0'>

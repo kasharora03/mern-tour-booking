@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Footer.css';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/myimg/logoeasy.png';
 // import Subtitle from '../shared/Subtitle';
 const quickLinks = [
   {
@@ -10,8 +9,8 @@ const quickLinks = [
     display: 'Home'
   },
   {
-    path: '/about',
-    display: 'About'
+    path: '/contact',
+    display: 'Connect'
   },
   {
     path: '/tours',
@@ -34,7 +33,14 @@ const otherLinks = [
 ]
 
 const Footer = () => {
+  useEffect(() => {
+    // Scroll to the top of the page when the route changes
+    window.scrollTo(0, 0);
+  }, []);
   const year = new Date().getFullYear();
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div className='bgy footer'>
       <Container>
@@ -44,9 +50,8 @@ const Footer = () => {
               <p className='tw-text-2xl md:tw-text-4xl blue tw-font-bold tw-pt-4'>EasyGo</p>
             </div>
             {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224346.5400466074!2d77.04417434001834!3d28.527252739872903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1710348244490!5m2!1sen!2sin" width="100%" height="100%" style={{border:0}} allowFullScreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
-            <div className='social d-flex align-items-center gap-4'>
+            <div className='social d-flex align-items-center gap-4 5'>
               <Link to='#' className='sociallink'><i className="ri-youtube-fill footericon"></i></Link>
-              <Link to='#' className='sociallink'><i className="ri-github-fill footericon"></i></Link>
               <Link to='#' className='sociallink'><i className="ri-instagram-fill footericon"></i></Link>
               <Link to='#' className='sociallink'><i className="ri-facebook-fill footericon"></i></Link>
               <Link to='#' className='sociallink'><i className="ri-linkedin-fill footericon"></i></Link>
@@ -59,7 +64,7 @@ const Footer = () => {
               {
                 quickLinks.map((item, index) => (
                   <ListGroupItem key={index} className='ps-0 border-0'>
-                    <Link to={item.path}>{item.display}</Link>
+                  <Link to={item.path} onClick={scrollToTop}>{item.display}</Link>
                   </ListGroupItem>
                 ))
               }
@@ -72,7 +77,7 @@ const Footer = () => {
               {
                 otherLinks.map((item, index) => (
                   <ListGroupItem key={index} className='ps-0 border-0'>
-                    <Link to={item.path}>{item.display}</Link>
+                  <Link to={item.path} onClick={scrollToTop}>{item.display}</Link>
                   </ListGroupItem>
                 ))
               }

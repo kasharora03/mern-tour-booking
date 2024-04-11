@@ -23,7 +23,7 @@ const SearchResultList = () => {
       <section >
         <Container>
           <Row className=' tw-pt-5'>
-          <p className='tw-text-xl tw-font-medium tw-capitalize'>{`Results for ${searchedCity}`}</p>
+          <p className='tw-text-xl tw-font-medium tw-capitalize tw-my-5'>{`Results for ${searchedCity}`}</p>
             {data.length === 0 ? (
               <Col>
                 <div className='tw-flex tw-justify-center md:tw-pt-20 tw-pt-5 tw-align-middle'>
@@ -35,7 +35,7 @@ const SearchResultList = () => {
               </Col>
             ) : (
               data.map((tour) => (
-                <Col lg="3" md='6' className="mb-4" key={tour._id}>
+                <Col lg="3" md='6' className="mb-4 tw-mx-4" key={tour._id}>
                   <TourCard tours={tour} />
                 </Col>
               ))
