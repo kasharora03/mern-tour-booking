@@ -12,6 +12,11 @@ import Blog from '../components/Blog/Blog';
 import NewsLetter from '../shared/NewsLetter';
 // import BlogDetail from '../components/Blog/BlogDetail';
 import BlogPost from '../components/Blog/BlogPost';
+// import AdminDashboard from '../components/Admin/AdminDashboard';
+import AdminLayout from '../components/Layout/AdminLayout';
+import AdminUser from '../Pages/Admin/AdminUser';
+import AdminContact from '../Pages/Admin/AdminContact';
+import AdminReview from '../Pages/Admin/AdminReview';
 
 const Routers = () => {
     return (
@@ -30,7 +35,15 @@ const Routers = () => {
                 <Route exact  path='/tours/search' element={<SearchResultList />} />
                 <Route exact  path='/thankyou' element={<Thankyou />} />
                 <Route path="/search-result-list" element={<SearchResultList />} />
+                {/* <Route path='/admindash' element={<AdminDashboard/>}/> */}
                 {/* <Route path ='*' render={() => <Redirect to='/'/>}/> */}
+
+                {/* nested routed for admin */}
+                <Route path='/admin' element={<AdminLayout/>}>
+                <Route path='users' element={<AdminUser/>}/>
+                <Route path='contacts' element={<AdminContact/>}/>
+                <Route path='reviews' element={<AdminReview/>}/>
+                </Route>
             </Routes>
 
         </div>

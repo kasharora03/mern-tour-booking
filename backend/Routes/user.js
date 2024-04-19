@@ -3,17 +3,17 @@ import { updateUser, deleteUser, getSingleUser, getAllUser } from './../controll
 import { verifyAdmin, verifyUser } from '../utils/verifyToken.js';
 
 const router = express.Router();
-
+// verify admin in all 3
 // update user
-router.put('/:id', verifyUser, updateUser)
+router.put('/:id', updateUser)
 
 // delete user
-router.delete('/:id', verifyUser, deleteUser)
+router.delete('/:id', deleteUser)
 
 // get single user
-router.get('/:id', verifyUser, getSingleUser)
+router.get('/:id',  getSingleUser)
 
 // get all user
-router.get('/', verifyAdmin, getAllUser)
+router.get('/', getAllUser)
 
 export default router;
