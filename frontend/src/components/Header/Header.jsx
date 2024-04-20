@@ -1,8 +1,6 @@
 import React, { useRef, useEffect, useContext } from 'react';
 import { Container, Row, Button } from 'reactstrap';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-
-
 import './Header.css';
 import { AuthContext } from './../../context/AuthContext'
 
@@ -11,17 +9,9 @@ const NavLinks = [
         path: '/home',
         display: 'Home'
     },
-    // {
-    //     path: '/about',
-    //     display: 'About'
-    // },
     {
         path: '/tours',
         display: 'Tours',
-        // dropdown: [
-        //     { path: '/tour1', display: 'Featured Tours' },
-        //     { path: '/tour2', display: 'All Tours' }
-        // ]
     },
     {
         path: '/blog',

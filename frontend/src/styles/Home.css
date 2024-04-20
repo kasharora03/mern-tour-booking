@@ -1,28 +1,15 @@
 /* Home.css */
-
-.btn-back-to-top {
-  display: none;
+.go-to-top-btn {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
+  top:100px;
+  justify-content: center;
+  display: flex;
+  z-index: 1000; /* Ensure the button appears on top of other content */
 }
 
-.btn-back-to-top.show {
-  display: block;
+.goto{
+  background-color: var(--primary-color);
 }
-
-.btn-back-to-top:hover {
-  opacity: 0.8;
-}
-
 .yellow{
     color: rgba(240,181,29,255);
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Home.css';
 import { Container, Row, Col, Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,8 +10,28 @@ import NewsLetter from '../shared/NewsLetter.jsx';
 import { Link } from 'react-router-dom';
 import Her from '../components/Hero/Her.jsx';
 
-
 const Home = () => {
+  const [showGoToTop, setShowGoToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowGoToTop(true);
+      } else {
+        setShowGoToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleGoToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className='tw-w-full'>
@@ -43,7 +63,7 @@ const Home = () => {
       <section className='explore tw-mx-auto tw-flex tw-justify-center pt-0 mt-0 tw-overflow-hidden'>
         <span>
           <Container>
-            <Button className='btn primary_btn tw-rounded-none'><Link to='/tours'>Explore More Tours <i class="ri-arrow-right-line tw"></i></Link></Button>
+            <Button className='btn primary_btn tw-rounded-none'><Link to='/tours'>Explore More Tours <i className="ri-arrow-right-line tw"></i></Link></Button>
           </Container>
         </span>
 
@@ -76,7 +96,17 @@ const Home = () => {
       </section>
 
       {/* footer called in layout */}
+      
+      {/* Go to Top button */}
+      <div className='tw-flex tw-justify-center'>
+      {showGoToTop && (
+        <Button className='go-to-top-btn primary_btn' onClick={handleGoToTop}>
+          <i className='ri-arrow-up-line'></i> Go to Top
+        </Button>
+      )}
+      </div>
     </div>
   )
 }
+
 export default Home;

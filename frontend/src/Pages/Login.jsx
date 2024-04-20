@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import '../styles/login.css';
 import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
 import { Link, useNavigate } from 'react-router-dom';
@@ -73,6 +73,10 @@ const Login = () => {
       setPasswordVisible(false);
     }, 1000);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <section className='md:tw-my-5'>
       <Container>
