@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react';
 import '../styles/login.css';
 import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
 import { Link, useNavigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ const Register = () => {
   });
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const {dispatch} = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,6 +24,28 @@ const Register = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
+
+    // Password validation regex
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+    if (!passwordRegex.test(credentials.password)) {
+      swal({
+        icon: "warning",
+        title: "Password Requirements",
+        text: "Password should be at least 8 characters long with at least one uppercase letter, one lowercase letter, one number, and one special character.",
+        buttons: {
+          confirm: {
+            text: "OK",
+            value: true,
+            visible: true,
+            className: "bgyellow",
+            closeModal: true
+          }
+        }
+      });
+      return;
+    }
+
     try {
       const res = await fetch(`${BASE_URL}/auth/register`, {
         method: 'post',
@@ -33,7 +55,7 @@ const Register = () => {
         body: JSON.stringify(credentials)
       });
       const result = await res.json();
-  
+
       if (!res.ok) {
         if (res.status === 400 && result.message === "User already exists") {
           swal({
@@ -67,7 +89,7 @@ const Register = () => {
         }
         return;
       }
-  
+
       dispatch({ type: 'REGISTER_SUCCESS' });
       swal({
         icon: "success",
@@ -100,7 +122,6 @@ const Register = () => {
       });
     }
   };
-  
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(true);
@@ -112,7 +133,7 @@ const Register = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
-  
+
   return (
     <section>
       <Container>

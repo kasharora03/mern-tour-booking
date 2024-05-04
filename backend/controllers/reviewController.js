@@ -3,10 +3,6 @@ import Review from "../models/Review.js";
 
 export const createReview = async (req, res) => {
     const tourID = req.params.tourID; // Ensure it's 'tourID' here
-    // tries if
-    // if (!mongoose.Types.ObjectId.isValid(tourID)) {
-    //     return res.status(400).json({ success: false, message: 'Invalid tourID' });
-    // }
     const newReview = new Review({...req.body})
     try {
         const savedReview = await newReview.save()

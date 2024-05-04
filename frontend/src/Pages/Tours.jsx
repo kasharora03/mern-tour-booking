@@ -7,7 +7,7 @@ import banner from '../../src/assets/myimg/banner.PNG'
 import SearchBar from '../shared/SearchBar';
 import { Container, Row, Col, Spinner } from 'reactstrap';
 import TourCard from '../../src/shared/TourCard';
-// import tourData from '../../src/assets/data/tours';
+// import tour from '../../src/assets/data/tours';
 
 import useFetch from '../hooks/useFetch';
 import { BASE_URL } from '../utils/config';

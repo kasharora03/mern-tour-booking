@@ -36,8 +36,8 @@ const connect = async () => {
 
 }
 // middleware
-app.use(express.json()); // parse request of content type - application/json
-app.use(cors(corsOptions)) // enable CORS
+app.use(express.json());
+app.use(cors(corsOptions))
 app.use(cookieParser());
 app.get('/', (req, res) => {
     res.send('hello')

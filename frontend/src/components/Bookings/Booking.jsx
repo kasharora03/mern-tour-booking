@@ -17,10 +17,10 @@ const Booking = ({ tour, avgRating }) => {
     tourName: title,
     fullName: "",
     phone: "",
-    pickUp: "", // Store address instead of latitude and longitude
+    pickUp: "", 
     time: "",
     custom: "",
-    bookAt: "", // Add bookAt field for date
+    bookAt: "",
     guestSize: 1,
   });
 
@@ -59,12 +59,10 @@ const Booking = ({ tour, avgRating }) => {
         },
         (error) => {
           console.error('Error occurred while getting current position:', error);
-          // Handle error
         }
       );
     } else {
       console.error('Geolocation is not supported by this browser');
-      // Handle unsupported browser
     }
   };
 
@@ -103,7 +101,6 @@ const Booking = ({ tour, avgRating }) => {
             }
           }
         });
-        // Return from function if user is not logged in
         return;
       }
       const res = await fetch(`${BASE_URL}/booking`, {

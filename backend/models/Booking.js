@@ -7,6 +7,7 @@ const bookingSchema = new mongoose.Schema(
     },
     userEmail: {
       type: String,
+      
     },
     tourName:{
         type:String,
@@ -22,11 +23,11 @@ const bookingSchema = new mongoose.Schema(
     },
     time: {
       type:String,
-      required: true,
+      // required: true,
     },
     custom: {
       type:String,
-      required: true,
+      // required: true,
     },
     guestSize:{
         type: Number,

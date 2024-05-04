@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate} from "react-router-dom";
 import Home from '../Pages/Home';
-import About from '../Pages/About';
+// import About from '../Pages/About';
 import Tours from '../Pages/Tours';
 import TourDetails from '../Pages/TourDetails';
 import Login from '../Pages/Login';
@@ -17,6 +17,7 @@ import AdminLayout from '../components/Layout/AdminLayout';
 import AdminUser from '../Pages/Admin/AdminUser';
 import AdminContact from '../Pages/Admin/AdminContact';
 import AdminReview from '../Pages/Admin/AdminReview';
+import Gallery from '../shared/Gallery';
 
 const Routers = () => {
     return (
@@ -35,8 +36,7 @@ const Routers = () => {
                 <Route exact  path='/tours/search' element={<SearchResultList />} />
                 <Route exact  path='/thankyou' element={<Thankyou />} />
                 <Route path="/search-result-list" element={<SearchResultList />} />
-                {/* <Route path='/admindash' element={<AdminDashboard/>}/> */}
-                {/* <Route path ='*' render={() => <Redirect to='/'/>}/> */}
+                <Route path='/gallery' element={<Gallery/>}/>
 
                 {/* nested routed for admin */}
                 <Route path='/admin' element={<AdminLayout/>}>

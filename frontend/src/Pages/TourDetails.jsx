@@ -61,7 +61,7 @@ const TourDetails = () => {
         const reviewText = reviewmsgRef.current.value;
         reviewmsgRef.current.value = '';
         setTourRating(null);
-
+    
         try {
             if (!user || user === undefined || user === null) {
                 swal({
@@ -93,6 +93,7 @@ const TourDetails = () => {
                 body: JSON.stringify(reviewObj),
             });
             const result = await res.json();
+            
             if (!res.ok) {
                 return swal({
                     icon: 'error',
@@ -123,6 +124,8 @@ const TourDetails = () => {
                     },
                 },
             });
+            // Reload the page only when review is submitted successfully
+            window.location.reload();
         } catch (error) {
             swal({
                 icon: 'error',
@@ -140,6 +143,7 @@ const TourDetails = () => {
             });
         }
     };
+    
 
     return (
         <section>

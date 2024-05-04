@@ -13,7 +13,7 @@ const SearchBar = () => {
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // Prevent the default form submission behavior
+            e.preventDefault(); 
             SearchHandler();
         }
     };
