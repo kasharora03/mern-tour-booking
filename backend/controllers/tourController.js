@@ -17,7 +17,7 @@ export const updateTour = async (req, res) => {
     try {
         const updatedTour = await Tour.findByIdAndUpdate(id, {
             $set: req.body
-        }, { new: true }) // return the new value not the old one
+        }, { new: true }) 
 
         res.status(200).json({
             success: true,
